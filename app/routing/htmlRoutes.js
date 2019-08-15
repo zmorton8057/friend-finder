@@ -1,8 +1,15 @@
 const routes = require('express').Router();
 const path = require('path')
 
-routes.get('/', (req, res) => {
+routes.get('/survey', (req, res) => {
   res.sendFile(path.join(__dirname,'../public/survey.html'))
 })
 
+routes.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname,'../public/home.html'))
+})
+///// Error handling, if a route does not exist default to the home page.
+routes.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname,'../public/home.html'))
+})
 module.exports = routes;

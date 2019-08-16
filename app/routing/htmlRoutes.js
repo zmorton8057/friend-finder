@@ -8,8 +8,20 @@ routes.get('/survey', (req, res) => {
 routes.get('/', (req, res) => {
   res.sendFile(path.join(__dirname,'../public/home.html'))
 })
+
+
+
+routes.get('/api/friends', (req, res) => {
+  res.sendFile(path.join(__dirname,'../data/friends.json'))
+})
+
+
+
+
+
 ///// Error handling, if a route does not exist default to the home page.
 routes.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname,'../public/home.html'))
+  res.send('404')
 })
+
 module.exports = routes;

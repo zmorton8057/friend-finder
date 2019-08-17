@@ -19,6 +19,9 @@
   },
   "homepage": "https://github.com/zmorton8057/friend-finder#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "bootstrap": "^4.3.1",
+    "express": "^4.17.1",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.15.0"
   }
 }

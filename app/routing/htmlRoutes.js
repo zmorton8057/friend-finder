@@ -11,17 +11,13 @@ routes.get('/', (req, res) => {
 
 
 
-routes.get('/api/friends', (req, res) => {
-  res.sendFile(path.join(__dirname,'../data/friends.json'))
-})
-
 
 
 
 
 ///// Error handling, if a route does not exist default to the home page.
-routes.get('*', (req, res) => {
-  res.send('404')
-})
+// routes.get('*', (req, res) => {
+//   res.send('404')
+// })
 
 module.exports = routes;

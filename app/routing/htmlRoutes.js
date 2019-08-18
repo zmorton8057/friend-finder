@@ -9,15 +9,9 @@ routes.get('/', (req, res) => {
   res.sendFile(path.join(__dirname,'../public/home.html'))
 })
 
-
-
-
-
-
-
-///// Error handling, if a route does not exist default to the home page.
-// routes.get('*', (req, res) => {
-//   res.send('404')
-// })
+/// Error handling, if a route does not exist default to the home page.
+routes.get('*', (req, res) => {
+  res.send('404')
+})
 
 module.exports = routes;

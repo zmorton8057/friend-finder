@@ -1,13 +1,17 @@
+
 const data = require('express').Router();
 const path = require('path');
+var bodyParser = require('body-parser')
+data.use(bodyParser.json());
+data.use(bodyParser.urlencoded({
+  extended: true
+}));
 
 data.route('/friends').get(function (req, res) {
-    res.sendFile(path.join(__dirname,'../data/friends.json'))
-   
-  });
-  
-  data.post('/api/send', (req, res) => {
-   //function to send data to 'database' or js file with data 
-  });
+    res.sendFile(path.join(__dirname, '../data/friends.js'))
+});
 
-  module.exports = data;
+
+
+
+module.exports = data;

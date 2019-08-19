@@ -165,15 +165,14 @@
                     $("#question10").val().trim()
             ]
             };
+            
+
             $.post("/api/friends", user, function(user) {
                     alert("new user added!");
                 });
             
             
-            
-            console.log(user);
-            console.log(user.scores)
-
+                
         });
 
 

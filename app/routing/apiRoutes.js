@@ -10,13 +10,15 @@ data.use(bodyParser.urlencoded({
 
 data.route('/friends').get(function (req, res) {
     res.json(friendsArray)
-    
+    getMatch()
 }); //// <============== the end of the section it needs to be placed in
 ///////////////////////// This section below will need to be placed within the .get route above in order to be executed on submit. Only keeping it out for testing purposes.
 
 
 
 
+
+function getMatch (){
 
 
 //////////// Convert the User score into its own array of scores
@@ -51,14 +53,18 @@ console.log(dif)
 function calculateClosestTo (arr) {
   return arr.reduce((acc, x) =>
       acc === 0 ? x :
-      x > 0 && x <= Math.abs(acc) ? x :
-      x < 0 && -x < Math.abs(acc) ? x : acc
+      x >= 0 && x <= Math.abs(acc) ? x :
+      x <= 0 && -x <= Math.abs(acc) ? x : acc
   , 0)
 }
-var closestToZero =calculateClosestTo(dif);
+var closestToZero = calculateClosestTo(dif);
 console.log(closestToZero)
 var index = dif.indexOf(closestToZero)
 console.log(index)
+//////////// Finds the Match
+console.log(friendsArray[index])
 
+
+}
 
 module.exports = data;

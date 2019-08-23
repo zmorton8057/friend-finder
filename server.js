@@ -16,10 +16,10 @@ app.use('/api', data)
 
 app.use('/', routes)
 
-app.post("/api/friends", function (req, res) {
-    allFriends.push(req.body);
-    res.json();
-});
+// app.post("/api/friends", function (req, res) {
+//     allFriends.push(req.body);
+//     res.json();
+// });
 
 
 

@@ -2,17 +2,18 @@
 const data = require('express').Router();
 const path = require('path');
 var bodyParser = require('body-parser')
-var $ = require("jquery");
 var friendsArray = require(path.join(__dirname, '../data/friends.js'))
 data.use(bodyParser.json());
 data.use(bodyParser.urlencoded({
   extended: true
 }));
 
-data.route('/friends').get(function (req, res) {
+data.route('/friends').post(function (req, res) {
+  userLog = req.body;
   res.json(friendsArray)
-  var resp = getMatch()
-  res.send(resp)
+  console.log(friendsArray)
+  resp = getMatch()
+  console.log(resp)
 }); //// <============== the end of the section it needs to be placed in
 ///////////////////////// This section below will need to be placed within the .get route above in order to be executed on submit. Only keeping it out for testing purposes.
 
@@ -24,7 +25,7 @@ function getMatch() {
 
 
   //////////// Convert the User score into its own array of scores
-  var newUser = friendsArray.pop()
+  var newUser = userLog;
   userScore = newUser.scores
   ////////// Converts the userScores from a string to a number
   var userNumber = userScore.map(Number);
@@ -55,8 +56,8 @@ function getMatch() {
   function calculateClosestTo(arr) {
     return arr.reduce((acc, x) =>
       acc === 0 ? x :
-        x > 0 && x < Math.abs(acc) ? x :
-          x < 0 && -x < Math.abs(acc) ? x : acc
+        x >= 0 && x <= Math.abs(acc) ? x :
+          x <= 0 && -x <= Math.abs(acc) ? x : acc
       , 0)
   }
   var closestToZero = calculateClosestTo(dif);
@@ -64,10 +65,9 @@ function getMatch() {
   var index = dif.indexOf(closestToZero)
   console.log(index)
   //////////// Finds the Match
+  console.log(friendsArray[index])
+  return friendsArray[index]
 
-  var match = friendsArray[index]
-  console.log(match)
-  return match
 }
 
 module.exports = data;

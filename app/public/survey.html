@@ -169,7 +169,8 @@
                     alert("new user added!");
             })
             .then(function(resp) {
-                console.log(resp)    
+                $( "#someDivId" ).append(` <p>You have matched with ${resp.name}</p>` );
+                console.log(resp.name)    
             });
             
             
